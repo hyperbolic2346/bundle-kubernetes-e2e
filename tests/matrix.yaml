@@ -1,0 +1,16 @@
+"tests":
+- "name": e2e
+  "description": End-to-end test of Kubernetes
+  "rules":
+    - "do":
+        "task": matrix.tasks.deploy
+    - "after": deploy
+      "periodic": 5
+      "do":
+        "task": matrix.tasks.health
+      "until": run_action.complete
+    - "after": health.status.healthy
+      "do":
+        "task": matrix.tasks.run_action
+        "application": kubernetes-e2e
+        "action": test
