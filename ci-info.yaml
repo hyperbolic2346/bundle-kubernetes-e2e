@@ -1,0 +1,6 @@
+bundle:
+  name: kubernetes-e2e
+  namespace: containers
+  release: false
+  to-channel: beta
+charm-upgrade: {}
